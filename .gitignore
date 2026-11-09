@@ -2,9 +2,10 @@
 node_modules/
 dist/
 out/
-build/
 .env
 .env.*
 *.log
 .idea/
 .vscode/
+.eslintcache
+release/
