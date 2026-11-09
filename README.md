@@ -1,6 +1,6 @@
 # HongguoDesktop
 
-HongguoDesktop 桌面端项目，基于 [electron-vite](https://github.com/alex8088/electron-vite)（React + TypeScript）和 [openhongguo](https://github.com/beilunyang/openhongguo)。
+HongguoDesktop 桌面端项目，基于 [electron-vite](https://github.com/alex8088/electron-vite)（Vue 3 + TypeScript）和 [openhongguo](https://github.com/beilunyang/openhongguo)。
 
 ## 结构
 
