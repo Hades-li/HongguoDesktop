@@ -1,0 +1,119 @@
+.page-enter-active {
+  transition:
+    opacity 0.18s var(--ease-out),
+    transform 0.18s var(--ease-out);
+}
+
+.page-leave-active {
+  transition: opacity 0.12s ease-in;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-next-enter-active,
+.slide-next-leave-active,
+.slide-prev-enter-active,
+.slide-prev-leave-active,
+.slide-up-enter-active,
+.slide-up-leave-active,
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition:
+    transform 0.45s var(--ease-out),
+    opacity 0.45s var(--ease-out);
+}
+
+.slide-next-enter-from,
+.slide-prev-leave-to {
+  transform: translateX(6%);
+  opacity: 0;
+}
+
+.slide-next-leave-to,
+.slide-prev-enter-from {
+  transform: translateX(-6%);
+  opacity: 0;
+}
+
+.slide-up-enter-from,
+.slide-down-leave-to {
+  transform: translateY(12%);
+  opacity: 0;
+}
+
+.slide-up-leave-to,
+.slide-down-enter-from {
+  transform: translateY(-12%);
+  opacity: 0;
+}
+
+.drawer-enter-active,
+.drawer-leave-active {
+  transition:
+    margin-right 0.25s var(--ease-out),
+    opacity 0.25s var(--ease-out);
+}
+
+.drawer-enter-from,
+.drawer-leave-to {
+  margin-right: calc(var(--spacing-drawer) * -1);
+  opacity: 0;
+}
+
+.pop-enter-active {
+  transition:
+    opacity 0.16s ease,
+    transform 0.16s var(--ease-out);
+}
+
+.pop-leave-active {
+  transition: opacity 0.12s ease;
+}
+
+.pop-enter-from {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+}
+
+.pop-leave-to {
+  opacity: 0;
+}
+
+/* 竖屏切集：PlayView <Transition :name="`ep-${direction}`"> */
+.ep-next-enter-active,
+.ep-next-leave-active,
+.ep-prev-enter-active,
+.ep-prev-leave-active {
+  transition:
+    transform 0.2s var(--ease-out),
+    opacity 0.2s var(--ease-out);
+}
+
+.ep-next-enter-from,
+.ep-prev-leave-to {
+  transform: translateY(8%);
+  opacity: 0;
+}
+
+.ep-next-leave-to,
+.ep-prev-enter-from {
+  transform: translateY(-8%);
+  opacity: 0;
+}

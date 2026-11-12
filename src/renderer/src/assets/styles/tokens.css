@@ -1,0 +1,117 @@
+/* 设计 Token：数值来自 Ardot 设计稿（见 docs/开发文档-UI重构.md §2.2）
+ * 用法：bg-card / text-fg-3 / border-white/10 / rounded-10 / text-13 / shadow-primary / font-num
+ * static：全部输出为 CSS 变量，便于 scoped 样式与内联 style 使用 var(--color-*) */
+@theme static {
+  /* 背景层级 */
+  --color-app: #0e0e12;
+  --color-sidebar: #09090c;
+  --color-drawer: #111116;
+  --color-panel: #141419;
+  --color-card: #1a1a20;
+  --color-card-soft: #17171d;
+  --color-card-2: #1c1c23;
+  --color-tile: #22222a;
+  --color-tile-hover: #2e2e38;
+  --color-nav: #1f1f26;
+  --color-kbd: #26262e;
+  --color-ghost: #24242c;
+  --color-track: #2a2a33;
+
+  /* 品牌 */
+  --color-brand: #ff2d55;
+  --color-brand-2: #ff6b3d;
+  --color-brand-3: #ffb547;
+  --color-brand-soft: #ff5c7a;
+
+  /* 文本（数字越大越暗） */
+  --color-fg-1: #fff;
+  --color-fg-2: #f4f4f5;
+  --color-fg-2b: #e4e4e7;
+  --color-fg-2c: #d4d4d8;
+  --color-fg-3: #b4b4be;
+  --color-fg-3b: #a1a1aa;
+  --color-fg-3c: #a8a8b2;
+  --color-fg-4: #8a8a96;
+  --color-fg-4b: #7c7c88;
+  --color-fg-4c: #6a6a76;
+  --color-fg-5: #5a5a66;
+  --color-icon-muted: #9a9aa6;
+  --color-rank-dim: #3a3a44;
+
+  --color-trend-up: #ff5c7a;
+  --color-trend-down: #8a8a96;
+  --color-trend-new: #ffc04d;
+
+  /* 圆角：rounded-4 … rounded-20 */
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-14: 14px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+
+  /* 字号：text-10 … text-56（不带行高，继承 body 1.5） */
+  --text-10: 10px;
+  --text-11: 11px;
+  --text-12: 12px;
+  --text-13: 13px;
+  --text-14: 14px;
+  --text-15: 15px;
+  --text-16: 16px;
+  --text-17: 17px;
+  --text-18: 18px;
+  --text-20: 20px;
+  --text-24: 24px;
+  --text-28: 28px;
+  --text-32: 32px;
+  --text-34: 34px;
+  --text-36: 36px;
+  --text-44: 44px;
+  --text-56: 56px;
+
+  --shadow-primary: 0 8px 24px rgba(255, 46, 84, 0.45);
+  --shadow-poster: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-video: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-num: 'Inter', var(--font-sans);
+  --font-rank: 'Bebas Neue', 'Inter', sans-serif;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+  /* 与原生 CSS 默认一致：未指定 ease-* 的 transition 使用 ease */
+  --default-transition-timing-function: ease;
+
+  /* 布局尺寸：w-sidebar / w-drawer */
+  --spacing-sidebar: 220px;
+  --spacing-drawer: 380px;
+
+  /* 动画 */
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  --animate-eq: eq 0.9s ease-in-out infinite;
+  --animate-spin: spin 0.8s linear infinite;
+  --animate-beat: beat 0.35s var(--ease-out);
+
+  @keyframes shimmer {
+    to {
+      background-position: -200% 0;
+    }
+  }
+
+  @keyframes eq {
+    0%,
+    100% {
+      transform: scaleY(0.35);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes beat {
+    50% {
+      transform: scale(1.35);
+    }
+  }
+}

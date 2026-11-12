@@ -1,12 +1,17 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
-import type { UpdateState } from '../shared/update'
+import { OHG_METHODS, type OhgApi } from '@shared/ipc'
+import type { UpdateState } from '@shared/update'
+
+const ohg = Object.fromEntries(
+  OHG_METHODS.map((method) => [
+    method,
+    (...args: unknown[]) => ipcRenderer.invoke(`ohg:${method}`, ...args)
+  ])
+) as OhgApi
 
 const api = {
-  search: (query: string, cursor?: string) => ipcRenderer.invoke('ohg:search', query, cursor),
-  listEpisodes: (seriesId: string) => ipcRenderer.invoke('ohg:episodes', seriesId),
-  resolvePlayback: (episodeId: string) => ipcRenderer.invoke('ohg:playback', episodeId),
-  resetDevice: () => ipcRenderer.invoke('ohg:reset-device'),
+  ...ohg,
   update: {
     state: (): Promise<UpdateState> => ipcRenderer.invoke('update:get'),
     download: (): Promise<void> => ipcRenderer.invoke('update:download'),

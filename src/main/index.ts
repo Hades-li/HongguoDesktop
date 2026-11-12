@@ -9,10 +9,15 @@ import { createUpdater, registerUpdateHandlers, scheduleUpdateChecks } from './u
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1100,
-    height: 760,
+    width: 1440,
+    height: 900,
+    minWidth: 1200,
+    minHeight: 720,
     show: false,
     autoHideMenuBar: true,
+    backgroundColor: '#0E0E12',
+    titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
+    trafficLightPosition: { x: 20, y: 18 },
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
