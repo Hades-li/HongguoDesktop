@@ -45,7 +45,8 @@ HongguoDesktop：看短剧的桌面客户端（Electron + Vue 3），UI 布局�
 - 视觉：深色底 `#0E0E12`，主色渐变 `#FF2D55 → #FF6B3D`。
 - macOS 使用 `hiddenInset` 标题栏，红绿灯在 `x:20, y:18`，顶部左侧的控件要给它让位（见 `services/platform.ts` 的 `isMac`）。
 - 应用图标：红果 + 镂空播放键 + 叶子 + 右侧咬口，红橙渐变底板。
-  - 打包用的 `build/icon.*` 和 `resources/icon.png` 目前还是 Electron 默认图标，尚未替换。
+  - 打包用的 `build/icon.icns`（含 16~1024 全套）、`build/icon.ico`（16~256）、`build/icon.png` 和 `resources/icon.png`（512）已替换为该图标。
+  - macOS 版是 Big Sur 网格（824/1024，带投影），Windows 和 Linux 版是满版圆角方；≤24px 去掉叶子。
 
 ## 参考文档
 
