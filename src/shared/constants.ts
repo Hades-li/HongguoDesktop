@@ -48,3 +48,6 @@ export type GenreKey = keyof typeof GENRES
 export const RANGE_SIZE = { detail: 50, drawer: 30 } as const
 
 export const TTL = { list: 5 * 60_000, detail: 10 * 60_000 } as const
+
+/** 加密分集经主进程解密代理播放的协议名（ohg-media://<id>/） */
+export const MEDIA_SCHEME = 'ohg-media'

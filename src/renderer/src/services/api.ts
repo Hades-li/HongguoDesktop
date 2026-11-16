@@ -32,7 +32,7 @@ export async function call<K extends OhgMethod>(
 }
 
 const MESSAGES: Record<string, string> = {
-  ANONYMOUS_LIMITED: '匿名设备暂无该集的播放权限',
+  ANONYMOUS_LIMITED: '暂时获取不到播放地址，请稍后重试或换个设备',
   DRM_PROTECTED: '该集为加密内容，暂不支持播放',
   CONTENT_UNAVAILABLE: '内容已下架或暂不可用',
   RATE_LIMITED: '请求太频繁，请稍后再试',

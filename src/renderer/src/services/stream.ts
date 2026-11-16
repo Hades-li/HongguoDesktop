@@ -1,11 +1,12 @@
 import type { Episode, Playback, Stream } from 'openhongguo'
+import { MEDIA_SCHEME } from '@shared/constants'
 
 export type PlayerLayout = 'portrait' | 'landscape'
 
-/** 一期只播非加密、非 DASH 的流，按分辨率从高到低 */
+/** 非 DASH 的流；加密流仅在已换成主进程解密代理地址时可播；按分辨率从高到低 */
 export function playableStreams(playback: Playback): Stream[] {
   return playback.streams
-    .filter((s) => s.url && !s.protected && !s.dash)
+    .filter((s) => s.url && !s.dash && (!s.protected || s.url.startsWith(`${MEDIA_SCHEME}:`)))
     .sort((a, b) => (b.width ?? 0) * (b.height ?? 0) - (a.width ?? 0) * (a.height ?? 0))
 }
 

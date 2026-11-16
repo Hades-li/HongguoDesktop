@@ -3,8 +3,11 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { installAppMenu } from './app-menu'
+import { registerMediaProtocol, registerMediaScheme } from './media'
 import { registerOhgHandlers } from './ohg'
 import { createUpdater, registerUpdateHandlers, scheduleUpdateChecks } from './updater'
+
+registerMediaScheme()
 
 function createWindow(): void {
   // Create the browser window.
@@ -58,6 +61,7 @@ app.whenReady().then(() => {
   })
 
   registerOhgHandlers()
+  registerMediaProtocol()
 
   const updater = createUpdater((state) => {
     for (const window of BrowserWindow.getAllWindows()) {
