@@ -1,6 +1,6 @@
 {
   "name": "hongguo-desktop",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "HongguoDesktop 桌面端应用",
   "main": "./out/main/index.js",
   "author": "Hades-li",
