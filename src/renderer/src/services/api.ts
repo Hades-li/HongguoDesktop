@@ -37,7 +37,8 @@ const MESSAGES: Record<string, string> = {
   CONTENT_UNAVAILABLE: '内容已下架或暂不可用',
   RATE_LIMITED: '请求太频繁，请稍后再试',
   TRANSPORT: '网络异常，请检查网络连接',
-  DEVICE_REJECTED: '设备校验失败，请重试'
+  DEVICE_REJECTED: '设备校验失败，请重试',
+  SIGNER_UNAVAILABLE: '签名服务不可用，请检查 OHG_SIGNER_URL 配置'
 }
 
 export function errorText(error: unknown): string {

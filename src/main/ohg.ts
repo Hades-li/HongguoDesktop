@@ -17,13 +17,26 @@ function log(line: string, loud = false): void {
   void logDir.then(() => appendFile(join(dir, 'ohg.log'), text + '\n')).catch(() => undefined)
 }
 
+/**
+ * 内置签名失效时（如 App 升级后签名算法变化），可设 OHG_SIGNER_URL / OHG_SIGNER_TOKEN
+ * 改用 openhongguo-signer 签名服务；与官方 CLI 同名。签名服务不可用时报 SIGNER_UNAVAILABLE。
+ */
+const signerUrl = process.env.OHG_SIGNER_URL || undefined
+const signerToken = process.env.OHG_SIGNER_TOKEN || undefined
+
 function getClient(): Promise<Client> {
-  clientPromise ??= import('openhongguo').then(({ createClient, fileProfileStore }) =>
-    createClient({
-      profile: fileProfileStore(join(app.getPath('userData'), 'anonymous.json')),
-      log: (line) => log(line, !/-> 2\d\d$/.test(line))
+  clientPromise ??= import('openhongguo').then(({ createClient, fileProfileStore }) => {
+    if (signerUrl) log(`using signer service ${signerUrl}`)
+    return createClient({
+      // 签名服务用单独的设备档案，免得与内置签名的档案互相覆盖
+      profile: fileProfileStore(
+        join(app.getPath('userData'), signerUrl ? 'anonymous-signer.json' : 'anonymous.json')
+      ),
+      log: (line) => log(line, !/-> 2\d\d$/.test(line)),
+      signerUrl,
+      signerToken
     })
-  )
+  })
   clientPromise.catch(() => (clientPromise = undefined))
   return clientPromise
 }
